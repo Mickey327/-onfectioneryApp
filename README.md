@@ -1,2 +1,2 @@
-# -onfectioneryApp
-Coursework 4th Semester
+# ConfectioneryApp
+Coursework 4th Semester "Кондитерская"
