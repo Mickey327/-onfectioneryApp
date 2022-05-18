@@ -1,8 +1,7 @@
 package com.example.confectioneryApp.product;
 
 import com.example.confectioneryApp.category.Category;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +9,8 @@ import javax.persistence.*;
 @Table
 @Getter
 @Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

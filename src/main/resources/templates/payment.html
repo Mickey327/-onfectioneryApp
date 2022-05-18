@@ -10,7 +10,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
-    <title>Данные заказа</title>
+    <title>Страница оплаты</title>
 </head>
 <body>
 
@@ -55,7 +55,6 @@
 </nav>
 <div class="container">
 
-    <form method="post" th:action="@{/checkout}" th:object="${order}">
     <!--Section: Block Content-->
     <section class="mt-5 mb-4">
 
@@ -69,30 +68,38 @@
                 <div class="card wish-list pb-1">
                     <div class="card-body">
 
-                        <h5 class="mb-2">Детали оплаты</h5>
+                        <h5 class="mb-2">Реквизиты</h5>
+
+
+                        <div class="md-form md-outline mt-2">
+                            <label for="form14">Номер банковской карты</label>
+                            <input type="text" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" required id="form14" placeholder="Номер вашей банковской карты" class="form-control">
+                        </div>
 
                         <!-- Grid row -->
                         <div class="row">
 
                             <!-- Grid column -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-3 mt-2">
 
                                 <!-- First name -->
-                                <div class="md-form md-outline mb-0 mb-lg-4">
-                                    <label for="name">Имя покупателя</label>
-                                    <input type="text" id="name" th:field="*{name}" required class="form-control mb-0 mb-lg-2" placeholder="Ваше имя">
+                                <div class="md-form md-outline mb-lg-4">
+                                    <label for="firstName">Срок действия</label>
+                                    <input type="text" pattern="([0-9]{2}[/]?){2}" id="firstName" required class="form-control mb-0 mb-lg-2" placeholder="Срок действия">
                                 </div>
 
                             </div>
                             <!-- Grid column -->
-
-                            <!-- Grid column -->
                             <div class="col-lg-6">
 
+                            </div>
+                            <!-- Grid column -->
+                            <div class="col-lg-3 mt-2">
+
                                 <!-- Last name -->
-                                <div class="md-form md-outline">
-                                    <label for="surname">Фамилия покупателя</label>
-                                    <input type="text" id="surname" th:field="*{surname}" required class="form-control" placeholder="Ваша фамилия">
+                                <div class="md-form md-outline mb-lg-4">
+                                    <label for="lastName">CVV</label>
+                                    <input pattern="/^[0-9]{3}$/" type="text" id="lastName" required class="form-control" placeholder="CVV карты">
                                 </div>
 
                             </div>
@@ -101,56 +108,11 @@
                         </div>
                         <!-- Grid row -->
 
-
-
-                        <!-- Country -->
-                        <div class="d-flex flex-wrap">
-                            <div class="select-outline position-relative w-100">
-                                <label>Страна - Российская Федерация</label>
-
-
-                            </div>
-                        </div>
-
-                        <!-- Address Part 1 -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="address">Адрес</label>
-                            <input type="text" required th:field="*{address}" id="address" placeholder="Улица, номер дома" class="form-control">
-                        </div>
-
-                        <!-- Address Part 2 -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="additionalAddress">Уточняющие детали адреса</label>
-                            <input type="text" id="additionalAddress" th:field="*{additionalAddress}" placeholder="Подъезд, квартира, номер домофона (опционально)"
+                        <div class="md-form md-outline">
+                            <label for="form15">Фамилия и имя держателя</label>
+                            <input type="text" id="form15" placeholder="Фамилия и имя держателя карты"
                                    class="form-control">
                         </div>
-
-                        <!-- Town / City -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="city">Населенный пункт</label>
-                            <input type="text" required id="city" th:field="*{city}" class="form-control" placeholder="Ваш населенный пункт">
-
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="phone">Номер телефона</label>
-                            <input type="tel" pattern="^[0-9-+\s()]*$" th:field="*{phone}" minlength="12" maxlength="14" required id="phone" class="form-control" placeholder="Ваш номер телефона">
-                        </div>
-
-                        <!-- Email address -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="email">Электронная почта</label>
-                            <input type="email" required id="email" th:field="*{email}" class="form-control" placeholder="Ваш почтовый адрес">
-                        </div>
-
-                        <!-- Additional information -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="additionalInfo">Доп. информация/пожелания к заказу</label>
-                            <textarea id="additionalInfo" th:field="*{additionalInfo}" style="overflow:auto;resize:none" class="md-textarea form-control" rows="4"></textarea>
-                        </div>
-
-
 
                     </div>
                 </div>
@@ -185,7 +147,7 @@
                             </li>
                         </ul>
 
-                        <input type="submit" class="btn btn-primary btn-block waves-effect waves-light text-white" value="Оплатить сейчас">
+                        <a th:href="@{/receipt}" h class="btn btn-primary btn-block waves-effect waves-light text-white">Оплатить сейчас</a>
 
                     </div>
                 </div>
@@ -200,7 +162,7 @@
 
     </section>
     <!--Section: Block Content-->
-    </form>
+
 
 </div>
 

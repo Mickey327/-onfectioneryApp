@@ -23,8 +23,13 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public Optional<Product> getById(Long id) {
+    public Optional<Product> findById(Long id) {
         return productRepository.findById(id);
+    }
+
+    public Product getById(Long id){
+        return findById(id).orElseThrow(() ->
+                new ProductNotFoundException("Товара с таким id не существует"));
     }
 
     public List<Product> getByCategoryId(Long categoryId) {

@@ -109,16 +109,12 @@ public class AdminController {
 
     @GetMapping("/products/update/{id}")
     public String updateProduct(@PathVariable("id") Long id, Model model){
-        Optional<Product> productOptional = productService.getById(id);
-        if (productOptional.isPresent()){
-            Product product = productOptional.get();
-            ProductDto productDto = productMapper.fromEntity(product);
-            productDto.setCategoryId(product.getCategory().getId());
-            model.addAttribute("categories", categoryService.getAll());
-            model.addAttribute("productDTO", productDto);
-            return "productsAdd";
-        }
-        throw new ProductNotFoundException("Вы пытаетесь обновить несуществующий товар");
+        Product product  = productService.getById(id);
+        ProductDto productDto = productMapper.fromEntity(product);
+        productDto.setCategoryId(product.getCategory().getId());
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("productDTO", productDto);
+        return "productsAdd";
     }
 
 }

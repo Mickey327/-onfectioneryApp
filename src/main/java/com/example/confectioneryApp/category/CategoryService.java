@@ -28,6 +28,7 @@ public class CategoryService {
     }
 
     public Category getById(Long id){
-        return categoryRepository.getById(id);
+        return findById(id).orElseThrow(() ->
+                new CategoryNotFoundException("Категории товара с таким id не существует"));
     }
 }

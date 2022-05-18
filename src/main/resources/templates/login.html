@@ -27,14 +27,14 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}" href="#">дом. страница</a>
+                    <a class="nav-link" th:href="@{/}" href="#">Главная</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">магазин</a>
+                    <a class="nav-link" th:href="@{/shop}" href="#">Магазин</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="./register.html"
-                       th:href="@{/register}">зарегистрироваться</a>  <!--add link -->
+                       th:href="@{/register}">Зарегистрироваться</a>  <!--add link -->
                 </li>
 
             </ul>
@@ -61,16 +61,12 @@
                     Неверная почта или пароль.
                 </div>
 
-                <input type="submit" value="Login" class="btn btn-primary btn-block">
+                <input type="submit" value="Войти" class="btn btn-primary btn-block">
                 <br>
                 <span >Ещё не зарегистрированы? <a class="linkControl" href="./register.html"
                                                 th:href="@{/register}">Зарегистрируйтесь здесь</a></span>
                 <br>
-                <a href="" th:href="@{/forgotpassword}">Забыли пароль?</a>
             </form>
-            <br>
-            <h4>Или</h4>
-            <a href="/oauth2/authorization/google" class="btn btn-primary">Авторизоваться через Google </a>
 
         </div>
 

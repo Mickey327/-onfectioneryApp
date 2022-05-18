@@ -1,7 +1,6 @@
 package com.example.confectioneryApp.category;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -9,6 +8,8 @@ import javax.persistence.*;
 @Table
 @Getter
 @Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Category {
     @Id
     @Column(name = "id")
