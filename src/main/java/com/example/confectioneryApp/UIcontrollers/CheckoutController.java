@@ -60,8 +60,15 @@ public class CheckoutController {
         Optional<Order> orderOptional = orderService.findByCart(cart);
         if (orderOptional.isPresent()) {
             model.addAttribute("order", orderOptional.get());
+            Cart cartRefresh = new Cart();
+            cartRefresh.setUser(user);
+            cartRefresh.setCartItemList(new ArrayList<>());
+            cartService.save(cartRefresh);
+            user.setCart(cartRefresh);
+            appUserDetailsService.save(user);
+
         }
-        model.addAttribute("cartCount", cart.getCartItemList().size());
+        model.addAttribute("cartCount", 0);
         user.getCart().setCartItemList(new ArrayList<>());
         appUserDetailsService.save(user);
         return "receipt";

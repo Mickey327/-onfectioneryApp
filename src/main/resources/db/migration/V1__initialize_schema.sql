@@ -31,7 +31,8 @@ CREATE TABLE users_to_role(
 );
 CREATE TABLE cart(
     id SERIAL NOT NULL PRIMARY KEY,
-    user_id integer NOT NULL
+    user_id integer NOT NULL,
+    CONSTRAINT FK_USER_CART_ID FOREIGN KEY (user_id) references users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE cartitem(
     cart_id integer NOT NULL,
@@ -52,4 +53,12 @@ CREATE TABLE orders(
   phone TEXT NOT NULL,
   additional_info TEXT,
   CONSTRAINT FK_CART_ORDER_ID FOREIGN KEY (cart_id) references cart(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE TABLE review(
+    id SERIAL NOT NULL,
+    user_id integer NOT NULL,
+    product_id integer NOT NULL,
+    review_text TEXT NOT NULL,
+    CONSTRAINT FK_USER_REVIEW_ID FOREIGN KEY (user_id) references users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_PRODUCT_REVIEW_ID FOREIGN KEY (product_id) references product(id) ON DELETE CASCADE ON UPDATE CASCADE
 );

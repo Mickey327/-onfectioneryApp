@@ -1,6 +1,7 @@
 package com.example.confectioneryApp.user;
 
 import com.example.confectioneryApp.cart.Cart;
+import com.example.confectioneryApp.review.Review;
 import com.example.confectioneryApp.role.Role;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -61,6 +62,9 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     private Cart cart;
+
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviewList;
 
     public User(User user) {
         this.id = user.getId();

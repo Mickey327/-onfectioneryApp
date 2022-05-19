@@ -28,4 +28,8 @@ public class AppUserDetailsService implements UserDetailsService {
     public Optional<User> findByEmail(String email){
         return userRepository.findByEmail(email);
     }
+
+    public User findByIdFetch(Long id){
+        return userRepository.findByIdFetch(id);
+    }
 }

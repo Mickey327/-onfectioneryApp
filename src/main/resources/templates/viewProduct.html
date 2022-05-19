@@ -69,15 +69,38 @@
             <p th:text="${product.category.name}"></p>
             <h2> <span th:text="${product.price}"></span>₽</h2>
             <h5>Вес:
-                <spna th:text="${product.weight}"></spna> грамм.
+                <span th:text="${product.weight}"></span> грамм.
             </h5>
             <p th:text="${product.description}"></p>
             <a href="" sec:authorize="isAuthenticated()" th:href="@{/addToCart/{id}(id = ${product.id})}" class="btn btn-primary">Добавить в корзину</a>
             <h5 sec:authorize="isAnonymous()" >Авторизуйтесь, чтобы добавить товар в корзину</h5>
+
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="page-header">
+                    <h3>Reviews</h3>
+            </div>
+            <div  class="comments-list">
+                <form method="post" sec:authorize="isAuthenticated()" th:action="@{/review/{productId}(productId = ${product.id})}" th:object="${review}">
+                    <div class="md-form md-outline mt-2 mb-2">
+                        <label for="additionalInfo">Ваш отзыв</label>
+                        <textarea id="additionalInfo" th:field="*{reviewText}" style="overflow:auto;resize:none" class="md-textarea form-control" rows="2"></textarea>
+                        <input type="submit" class="btn btn-primary btn-block waves-effect waves-light text-white mt-2 col-2" value="Оставить отзыв">
+                    </div>
+                </form>
+                <p class="mt-2 mb-2" sec:authorize="isAnonymous()">Чтобы оставить свой отзыв, авторизуйтесь</p>
+                <div th:each="review : ${reviews}" class="media bg-light mb-2">
+                    <div class="media-body">
+                        <h5 class="media-heading user_name"><span th:text="${review.user.firstName}"></span> <span th:text="${review.user.lastName}"></span> </h5>
+                        <span th:text="${review.reviewText}"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

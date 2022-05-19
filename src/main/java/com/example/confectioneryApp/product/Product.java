@@ -1,9 +1,11 @@
 package com.example.confectioneryApp.product;
 
 import com.example.confectioneryApp.category.Category;
+import com.example.confectioneryApp.review.Review;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "product")
 @Table
@@ -35,4 +37,7 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviewList;
 }

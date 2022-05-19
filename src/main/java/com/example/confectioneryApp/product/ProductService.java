@@ -3,6 +3,7 @@ package com.example.confectioneryApp.product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,9 @@ public class ProductService {
     public Product getById(Long id){
         return findById(id).orElseThrow(() ->
                 new ProductNotFoundException("Товара с таким id не существует"));
+    }
+    public Product findByIdFetch(Long id){
+        return productRepository.findByIdFetch(id);
     }
 
     public List<Product> getByCategoryId(Long categoryId) {

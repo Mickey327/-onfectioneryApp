@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
@@ -96,6 +97,7 @@ public class AdminController {
             imageUUID = imgName;
         }
         product.setImageName(imageUUID);
+        product.setReviewList(new ArrayList<>());
         productService.create(product);
 
         return "redirect:/admin/products";

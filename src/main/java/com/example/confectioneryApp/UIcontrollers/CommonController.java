@@ -7,6 +7,7 @@ import com.example.confectioneryApp.category.CategoryRepository;
 import com.example.confectioneryApp.category.CategoryService;
 import com.example.confectioneryApp.product.Product;
 import com.example.confectioneryApp.product.ProductService;
+import com.example.confectioneryApp.review.Review;
 import com.example.confectioneryApp.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,9 +28,12 @@ public class CommonController {
     @GetMapping(value = {"/","/home"})
     public String indexPage(Model model,
                             @AuthenticationPrincipal User user){
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("products", productService.getAll());
         if (user != null) {
             Cart cart = cartService.findByIdFetch(user.getCart().getId());
             model.addAttribute("cartCount", cart.getCartItemList().size());
+            model.addAttribute("userName", user.getFirstName());
         }
         return "index";
     }
@@ -63,7 +67,10 @@ public class CommonController {
     public String shopProductPage(@PathVariable("id") Long productId,
                                   Model model,
                                   @AuthenticationPrincipal User user){
+        Product product = productService.getById(productId);
         model.addAttribute("product", productService.getById(productId));
+        model.addAttribute("reviews", product.getReviewList());
+        model.addAttribute("review", new Review());
         if (user != null) {
             Cart cart = cartService.findByIdFetch(user.getCart().getId());
             model.addAttribute("cartCount", cart.getCartItemList().size());
