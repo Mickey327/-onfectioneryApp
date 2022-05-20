@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Category {
     @Id
     @Column(name = "id")

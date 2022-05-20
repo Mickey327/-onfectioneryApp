@@ -25,9 +25,6 @@ public class AppUserDetailsService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public Optional<User> findByEmail(String email){
-        return userRepository.findByEmail(email);
-    }
 
     public User findByIdFetch(Long id){
         return userRepository.findByIdFetch(id);

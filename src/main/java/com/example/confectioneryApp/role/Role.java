@@ -13,6 +13,7 @@ import java.util.List;
 @Table
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Role {
     @Id
     @Column(name = "id")

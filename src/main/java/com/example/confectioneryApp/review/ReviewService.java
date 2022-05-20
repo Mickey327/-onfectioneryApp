@@ -11,4 +11,7 @@ public class ReviewService {
     public void create(Review review){
         reviewRepository.save(review);
     }
+    public Review getById(Long id){
+        return reviewRepository.getById(id);
+    }
 }

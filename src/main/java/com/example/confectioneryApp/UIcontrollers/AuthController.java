@@ -39,19 +39,18 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @Transactional
     public String postRegisterUser(@ModelAttribute("user") User user, HttpServletRequest request) throws ServletException {
         Cart cart = new Cart();
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         List<Role> roleList = new ArrayList<>();
         roleList.add(roleService.findById(2L).get());
         user.setRoleList(roleList);
-        appUserDetailsService.save(user);
         cart.setUser(user);
-        cart.setCartItemList(new ArrayList<>());
-        cartService.save(cart);
         user.setCart(cart);
+        cart.setCartItemList(new ArrayList<>());
         appUserDetailsService.save(user);
-        request.login(user.getEmail(), user.getPassword());
-        return "redirect:/";
+        cartService.save(cart);
+        return "redirect:/login";
     }
 }
