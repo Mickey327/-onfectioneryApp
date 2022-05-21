@@ -1,10 +1,5 @@
 package com.example.confectioneryApp.role;
 
-import com.example.confectioneryApp.product.Product;
-import com.example.confectioneryApp.review.Review;
-import com.example.confectioneryApp.review.ReviewRepository;
-import com.example.confectioneryApp.review.ReviewService;
-import com.example.confectioneryApp.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +16,6 @@ public class RoleServiceTest {
         roleRepository = Mockito.mock(RoleRepository.class);
         roleService = new RoleService(roleRepository);
     }
-
     @Test
     void findById(){
         Long id = 1L;

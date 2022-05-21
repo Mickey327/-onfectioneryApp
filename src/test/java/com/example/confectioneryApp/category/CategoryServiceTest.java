@@ -1,27 +1,18 @@
 package com.example.confectioneryApp.category;
 
-import com.example.confectioneryApp.cart.Cart;
-import com.example.confectioneryApp.cart.CartRepository;
-import com.example.confectioneryApp.cart.CartService;
-import com.example.confectioneryApp.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.ArrayList;
 import java.util.Optional;
-
 public class CategoryServiceTest {
     private CategoryRepository categoryRepository;
     private CategoryService categoryService;
-
     @BeforeEach
     public void setUp() {
         categoryRepository = Mockito.mock(CategoryRepository.class);
         categoryService = new CategoryService(categoryRepository);
     }
-
     @Test
     void create(){
         Long id = 1L;
@@ -46,7 +37,6 @@ public class CategoryServiceTest {
         Category createdRealCategory = categoryService.findById(id).get();
         Assertions.assertEquals(createdRealCategory, createdCategory);
     }
-
     @Test
     void deleteById(){
         Long id = 1L;

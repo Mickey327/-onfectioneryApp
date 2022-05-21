@@ -1,16 +1,10 @@
 package com.example.confectioneryApp.order;
 
 import com.example.confectioneryApp.cart.Cart;
-import com.example.confectioneryApp.category.Category;
-import com.example.confectioneryApp.category.CategoryNotFoundException;
-import com.example.confectioneryApp.category.CategoryRepository;
-import com.example.confectioneryApp.category.CategoryService;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import java.util.Optional;
 
 public class OrderServiceTest {

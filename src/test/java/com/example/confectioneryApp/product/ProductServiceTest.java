@@ -1,15 +1,10 @@
 package com.example.confectioneryApp.product;
 
 import com.example.confectioneryApp.category.Category;
-import com.example.confectioneryApp.category.CategoryNotFoundException;
-import com.example.confectioneryApp.order.OrderRepository;
-import com.example.confectioneryApp.order.OrderService;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,13 +12,11 @@ import java.util.Optional;
 public class ProductServiceTest {
     private ProductRepository productRepository;
     private ProductService productService;
-
     @BeforeEach
     public void setUp() {
         productRepository = Mockito.mock(ProductRepository.class);
         productService = new ProductService(productRepository);
     }
-
     @Test
     void create(){
         Long id = 1L;
@@ -42,7 +35,6 @@ public class ProductServiceTest {
         Product createdRealProduct = productService.getById(id);
         Assertions.assertEquals(createdRealProduct, createdProduct);
     }
-
     @Test
     void findById(){
         Long id = 1L;
@@ -60,7 +52,6 @@ public class ProductServiceTest {
         Product createdRealProduct = productService.getById(id);
         Assertions.assertEquals(createdRealProduct, createdProduct);
     }
-
     @Test
     void getByCategoryId(){
         Long id = 1L;
@@ -79,7 +70,6 @@ public class ProductServiceTest {
         List<Product> createdRealProduct = productService.getByCategoryId(id);
         Assertions.assertEquals(createdRealProduct, List.of(createdProduct));
     }
-
     @Test
     void deleteById(){
         Long id = 1L;

@@ -1,17 +1,11 @@
 package com.example.confectioneryApp.review;
 
-import com.example.confectioneryApp.cart.Cart;
 import com.example.confectioneryApp.product.Product;
-import com.example.confectioneryApp.product.ProductRepository;
-import com.example.confectioneryApp.product.ProductService;
 import com.example.confectioneryApp.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.security.core.parameters.P;
-
-import java.util.ArrayList;
 
 public class ReviewServiceTest {
     private ReviewRepository reviewRepository;
@@ -22,7 +16,6 @@ public class ReviewServiceTest {
         reviewRepository = Mockito.mock(ReviewRepository.class);
         reviewService = new ReviewService(reviewRepository);
     }
-
     @Test
     void create(){
         Long id = 1L;
@@ -37,7 +30,6 @@ public class ReviewServiceTest {
         Review realCreatedReview = reviewService.getById(id);
         Assertions.assertEquals(realCreatedReview, createdReview);
     }
-
     @Test
     void getById(){
         Long id = 1L;
