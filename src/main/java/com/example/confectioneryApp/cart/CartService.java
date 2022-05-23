@@ -11,6 +11,9 @@ public class CartService {
     public void save(Cart cart){
         cartRepository.save(cart);
     }
+    public void deleteById(Long id){
+        cartRepository.deleteById(id);
+    }
 
     public Cart findByIdFetch(Long id){
         return cartRepository.findByIdFetch(id);

@@ -70,6 +70,7 @@ public class CheckoutController {
         }
         model.addAttribute("cartCount", 0);
         user.getCart().setCartItemList(new ArrayList<>());
+        cartService.deleteById(cart.getId());
         appUserDetailsService.save(user);
         return "receipt";
     }
