@@ -4,6 +4,7 @@ import com.example.confectioneryApp.category.Category;
 import com.example.confectioneryApp.category.CategoryNotFoundException;
 import com.example.confectioneryApp.category.CategoryService;
 import com.example.confectioneryApp.product.*;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +28,13 @@ public class AdminController {
     private final ProductService productService;
     private final ProductMapper productMapper;
 
+    @Operation(summary = "Get admin page")
     @GetMapping()
     public String adminHomePage(){
         return "adminHome";
     }
 
+    @Operation(summary = "Get category admin page")
     @GetMapping("/categories")
     public String getCategoriesPage(Model model){
         model.addAttribute("categories", categoryService.getAll());
@@ -66,6 +69,7 @@ public class AdminController {
         return "redirect:/admin/categories";
     }
 
+    @Operation(summary = "Get product admin page")
     @GetMapping("/products")
     public String getProductsPage(Model model){
         model.addAttribute("products", productService.getAll());

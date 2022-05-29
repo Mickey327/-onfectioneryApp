@@ -7,6 +7,7 @@ import com.example.confectioneryApp.order.Order;
 import com.example.confectioneryApp.order.OrderService;
 import com.example.confectioneryApp.user.AppUserDetailsService;
 import com.example.confectioneryApp.user.User;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class CheckoutController {
     private final OrderService orderService;
     private final AppUserDetailsService appUserDetailsService;
 
+    @Operation(summary = "Get checkout page")
     @GetMapping("/checkout")
     public String checkoutPage(Model model,
                              @AuthenticationPrincipal User user){
@@ -44,6 +46,8 @@ public class CheckoutController {
         return "redirect:/payment";
 
     }
+
+    @Operation(summary = "Get payment page")
     @GetMapping("/payment")
     public String payPage(Model model, @AuthenticationPrincipal User user){
         Cart cart = cartService.findByIdFetch(user.getCart().getId());
@@ -53,6 +57,7 @@ public class CheckoutController {
         return "payment";
     }
 
+    @Operation(summary = "Get receipt page")
     @GetMapping("/receipt")
     public String receiptPage(Model model,
                             @AuthenticationPrincipal User user){

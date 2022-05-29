@@ -6,6 +6,7 @@ import com.example.confectioneryApp.role.Role;
 import com.example.confectioneryApp.role.RoleService;
 import com.example.confectioneryApp.user.AppUserDetailsService;
 import com.example.confectioneryApp.user.User;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -28,11 +29,13 @@ public class AuthController {
     private final CartService cartService;
     private final RoleService roleService;
 
+    @Operation(summary = "Get login page")
     @GetMapping("/login")
     public String loginPage(){
         return "login";
     }
 
+    @Operation(summary = "Get register page")
     @GetMapping("/register")
     public String registerPage(){
         return "register";

@@ -9,6 +9,7 @@ import com.example.confectioneryApp.product.Product;
 import com.example.confectioneryApp.product.ProductService;
 import com.example.confectioneryApp.review.Review;
 import com.example.confectioneryApp.user.User;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class CommonController {
     private final CategoryService categoryService;
     private final CartService cartService;
 
+    @Operation(summary = "Get home page")
     @GetMapping(value = {"/","/home"})
     public String indexPage(Model model,
                             @AuthenticationPrincipal User user){
@@ -38,6 +40,7 @@ public class CommonController {
         return "index";
     }
 
+    @Operation(summary = "Get shop page")
     @GetMapping("/shop")
     public String shopPage(Model model,
                            @AuthenticationPrincipal User user){
@@ -50,6 +53,7 @@ public class CommonController {
         return "shop";
     }
 
+    @Operation(summary = "Get shop category page")
     @GetMapping("/shop/category/{id}")
     public String shopCategoryPage(@PathVariable("id") Long categoryId,
                                    Model model,
@@ -63,6 +67,7 @@ public class CommonController {
         return "shop";
     }
 
+    @Operation(summary = "Get shop product page")
     @GetMapping("/shop/product/{id}")
     public String shopProductPage(@PathVariable("id") Long productId,
                                   Model model,

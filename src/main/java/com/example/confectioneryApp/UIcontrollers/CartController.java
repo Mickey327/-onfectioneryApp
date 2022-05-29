@@ -7,6 +7,7 @@ import com.example.confectioneryApp.product.Product;
 import com.example.confectioneryApp.product.ProductService;
 import com.example.confectioneryApp.user.AppUserDetailsService;
 import com.example.confectioneryApp.user.User;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,7 @@ public class CartController {
         return "redirect:/shop/product/{id}";
     }
 
+    @Operation(summary = "Get cart page")
     @GetMapping("/cart")
     public String cartPage(Model model,
                            @AuthenticationPrincipal User user){
